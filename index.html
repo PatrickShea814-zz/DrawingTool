@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Drawing Tool</title>
-    <link rel="stylesheet" type="text/css" href="Assets/css/master.css">
+    <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
 
 </head>
 
@@ -14,10 +14,10 @@
         <div id="tools" class="size">
             Tools: <span id="selected-tool"></span>
             <!-- decreased radius and increased radius id's -->
-            <span class="radcontrols">
-                <button id="create-line" class="tool-control">Create Line</button>
-                <button id="create-rectangle" class="tool-control">Create Rectangle</button>
-                <button id="color-fill" class="tool-control">Color Fill</button>
+            <span class="toolcontrols">
+                <button id="create-line" class="toolbox">Create Line</button>
+                <button id="create-rectangle" class="toolbox">Create Rectangle</button>
+                <button id="color-fill" class="toolbox">Color Fill</button>
             </span>
             <div id="colors">
             </div>
@@ -32,7 +32,6 @@
 
     </canvas>
     <script src="JavaScript/main.js"></script>
-    <script src="JavaScript/radius.js"></script>
     <script src="JavaScript/colors.js"></script>
 
 </body>
