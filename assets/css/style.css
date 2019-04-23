@@ -17,7 +17,13 @@ body {
     -webkit-user-select: none;
 }
 
+#canvasContainer {
+    text-align: center;
+    padding-top: 100px;
+}
+
 #canvas {
+    display: inline-block;
     background-color: #ffffff;
     border: 1px solid #000000;
 }
