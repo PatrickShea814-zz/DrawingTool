@@ -18,7 +18,6 @@ window.onload = function () {
     // Color Palette Array
     let colors = ['blue', 'red', 'yellow', 'green', 'orange', 'purple', 'black'];
 
-    // Select current color for tools
     let setPalette = (event) => {
         //identify palette
         let palette = event.target;
@@ -29,7 +28,7 @@ window.onload = function () {
         palette.className += ' active ';
     }
 
-    // Display which color is currently selected.
+
     let setColor = (color) => {
         context.fillStyle = color;
         context.strokeStyle = color;
@@ -39,7 +38,7 @@ window.onload = function () {
         }
     }
 
-    // Create color palette buttons.
+
     for (let i = 0, n = colors.length; i < n; i++) {
         let palette = document.createElement('div');
         palette.className = 'palette';
@@ -48,7 +47,7 @@ window.onload = function () {
         document.getElementById('colors').appendChild(palette);
     }
 
-    // Invoke Selected Color as a variable.
+
     let selectedColor = setPalette({ target: document.getElementsByClassName('palette')[0] });
 
     // Convert Arrays to larger values for display by a factor of 20.
