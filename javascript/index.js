@@ -125,15 +125,20 @@ window.onload = function () {
         context.clearRect(Rectangle[0], Rectangle[1], rectWidth, rectHeight);
     };
 
-    let fillAround = (Rectangle) => {
-        let width = $('#canvas').attr('width');
-        let height = $('#canvas').attr('height');
-        context.fillRect(0, 0, width, height);
-        let rectWidth = Rectangle[2] - Rectangle[0];
-        let rectHeight = Rectangle[3] - Rectangle[1];
-        context.clearRect(Rectangle[0], Rectangle[1], rectWidth, rectHeight);
-        context.clearRect(0, 80, 240, 80);
+    let fillCanvas = (canv, rect, l1) => {
+        context.fillRect(0, 0, canv[0], canv[1]);
+        clearRect1(rect);
+        clearRect2(l1);
+    };
 
+    let clearRect1 = (rect) => {
+        let rectWidth = rect[2] - rect[0];
+        let rectHeight = rect[3] - rect[1];
+        context.clearRect(rect[0], rect[1], rectWidth, rectHeight);
+    };
+
+    let clearRect2 = (l1) => {
+        context.clearRect(l1[0], l1[1], l1[2], l1[3]);
     };
 
     // Creates New Blank Canvas
@@ -157,10 +162,7 @@ window.onload = function () {
                 drawRectangle(Rectangle);
                 break;
             case 'color-fill':
-                bucketFill(Bucket, Canvas, Rectangle);
-                break;
-            case 'fill-around':
-                fillAround(Rectangle);
+                fillCanvas(Canvas, Rectangle, Line1);
                 break;
             case 'clearCanvas':
                 eraseCanvas(Canvas);
@@ -183,16 +185,11 @@ window.onload = function () {
                 drawRectangle(Rectangle);
                 break;
             case 66:
-                bucketFill(Bucket, Canvas, Rectangle);
-                break;
-            case 70:
-                fillAround(Rectangle);
+                fillCanvas(Canvas, Rectangle, Line1);
                 break;
             case 69:
                 eraseCanvas(Canvas);
                 break;
         }
     });
-
-
 };
