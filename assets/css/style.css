@@ -10,13 +10,6 @@ body {
 
 /*adds to the inside of the divs*/
 
-* {
-    box-sizing: border-box;
-    font-family: sans-serif;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
 #canvasContainer {
     text-align: center;
     padding-top: 100px;

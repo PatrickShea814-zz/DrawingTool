@@ -4,13 +4,12 @@ window.onload = function () {
     // Set Canvas Configuration
     let canvas = document.createElement('canvas');
     context = canvas.getContext("2d");
-    context.lineWidth = "";
 
 
     // Input
     let C = [20, 4];
     let L1 = [1, 2, 6, 2];
-    let L2 = [6, 2, 6, 4];
+    let L2 = [6, 3, 6, 4];
     let R = [16, 1, 20, 3];
     let B = [10, 3, 'o'];
 
@@ -60,79 +59,55 @@ window.onload = function () {
             if (typeof arr[i] === 'number') {
                 let value = arr[i] * 40;
                 newValues.push(value);
-                // Convert values of 1 to 0 to connect line to edge of canvas.
             } else {
                 newValues.push(arr[i]);
-            }
+            };
         };
         console.log(`New Values: ${newValues}.`);
         return newValues;
     };
 
-    let Canvas = newArray(C);
-    let Line1 = newArray(L1);
-    let Line2 = newArray(L2);
-    let Rectangle = newArray(R);
-
     // Setup Canvas
     // Create Canvas: Should create a new canvas of width w and height h.
-    let createCanvas = () => {
+    let createCanvas = (callback) => {
         $(canvas).attr('id', 'canvas');
-        $(canvas).attr('width', Canvas[0]);
-        $(canvas).attr('height', Canvas[1]);
+        $(canvas).css('width', callback[0]);
+        $(canvas).css('height', callback[1]);
         $('#canvasContainer').append(canvas);
-        console.log(`Canvas created with a width of ${Canvas[0]}px and height of ${Canvas[1]}px.`)
+        console.log(`Canvas created with a width of ${callback[0]}px and height of ${callback[1]}px.`)
     };
 
-
-    // Create Canvas
-    createCanvas();
 
     // Create Line: Creates a new line from (x1,y1) to (x2,y2).
     let drawLine = (callback) => {
-        // Validate if X or Y are equal because diagonal lines are not supported.
-        if (callback[1] === callback[3] || callback[0] === callback[2]) {
-            context.beginPath();
-            context.strokeStyle = selectedColor;
-            context.moveTo(callback[0], callback[1]);
-            context.lineTo(callback[2], callback[3]);
-            context.stroke();
-            console.log(`Drawing Line from X1: ${callback[0]}, Y1: ${callback[1]} to X2: ${callback[2]}, Y2: ${callback[3]}.`)
-        } else {
-            console.log('Sorry! Canvas only supports horizontal and vertical lines at this time.');
-            alert('Sorry! Canvas only supports horizontal and vertical lines at this time.')
-        }
+        context.beginPath();
+        context.lineWidth = "2";
+        context.strokeStyle = selectedColor;
+        context.moveTo(callback[0], callback[1]);
+        context.lineTo(callback[2], callback[3]);
+        context.stroke();
+        console.log(`Drawing Line from X1: ${callback[0]}, Y1: ${callback[1]} to X2: ${callback[2]}, Y2: ${callback[3]}.`)
     };
 
     // Create Rectangle: Creates a new rectangle, whose upper left corner is (x1,y1) and lower right corner is (x2,y2).
-    let drawRectangle = (callback) => {
-        let rectWidth = callback[2] - callback[0];
-        let rectHeight = callback[3] - callback[1];
+    let createRectangle = (callback) => {
+        context.beginPath();
+        rectWidth = callback[2] - callback[0];
+        rectHeight = callback[3] - callback[1];
+        context.lineWidth = "2";
         context.strokeStyle = selectedColor;
-        context.strokeRect(callback[0], callback[1], rectWidth, rectHeight);
+        context.rect(callback[0], callback[1], rectWidth, rectHeight);
+        context.stroke();
+        console.log(`Creating Rectangle from X1: ${callback[0]}, Y1: ${callback[1]} to X2: ${rectWidth}, Y2: ${rectHeight}.`)
     };
 
-    // Fills the entire area connected to (x,y) with "colour" c.
-    let bucketFill = (Bucket, Canvas, Rectangle) => {
-        let fillWidth = Canvas[0] - Bucket[0];
-        let fillHeight = Canvas[1] - Bucket[1];
-        context.fillStyle = selectedColor;
-        context.fillRect(Bucket[0], Bucket[1], fillWidth, fillHeight);
-
-        let rectWidth = Rectangle[2] - Rectangle[0];
-        let rectHeight = Rectangle[3] - Rectangle[1];
-        context.clearRect(Rectangle[0], Rectangle[1], rectWidth, rectHeight);
-    };
-
-    let fillAround = (callback) => {
-        let width = $('#canvas').attr('width');
-        let height = $('#canvas').attr('height');
-        context.fillRect(0, 0, width, height);
-
-        let rectWidth = callback[2] - callback[0];
-        let rectHeight = callback[3] - callback[1];
-        context.clearRect(callback[0], callback[1], rectWidth, rectHeight);
-    };
+    // // Fills the entire area connected to (x,y) with "colour" c.
+    // let bucketFill = (callback) => {
+    //     context.beginPath();
+    //     context.rect();
+    //     context.fillStyle = "red";
+    //     context.fill();
+    // };
 
     // Creates New Blank Canvas
     function eraseCanvas(callback) {
@@ -151,14 +126,11 @@ window.onload = function () {
             case 'create-line-2':
                 drawLine(newArray(L2));
                 break;
-            case 'draw-rectangle':
-                drawRectangle(newArray(R));
+            case 'create-rectangle':
+                createRectangle(newArray(R));
                 break;
             case 'color-fill':
-                bucketFill(newArray(B), newArray(C), newArray(R))
-                break;
-            case 'fill-around':
-                fillAround(drawRectangle(newArray(R)));
+                bucketFill(B);
                 break;
             case 'clearCanvas':
                 eraseCanvas(newArray(C));
@@ -171,26 +143,24 @@ window.onload = function () {
         let key = e.which;
         console.log(key);
         switch (key) {
-            case 49:
+            case '49':
                 drawLine(newArray(L1));
                 break;
-            case 50:
+            case '50':
                 drawLine(newArray(L2));
                 break;
-            case 82:
-                drawRectangle(newArray(R));
+            case '114':
+                createRectangle(newArray(R));
                 break;
-            case 66:
-                bucketFill(newArray(B), newArray(C), newArray(R))
+            case '102':
+                bucketFill(B);
                 break;
-            case 70:
-                fillAround(drawRectangle(newArray(R)));
-                break;
-            case 69:
-                eraseCanvas(newArray(C));
+            case '99':
+                createCanvas(newArray(C));
                 break;
         }
     });
 
-
+    // Create Canvas
+    createCanvas(newArray(C));
 };
