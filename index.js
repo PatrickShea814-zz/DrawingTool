@@ -112,18 +112,6 @@ window.onload = function () {
         context.strokeRect(arr[0], arr[1], rectWidth, rectHeight);
     };
 
-    // Fills the entire area connected to (x,y) with "colour" c.
-    let bucketFill = (Bucket, Canvas, Rectangle) => {
-        let fillWidth = Canvas[0] - Bucket[0];
-        let fillHeight = Canvas[1] - Bucket[1];
-        context.fillStyle = selectedColor;
-        context.fillRect(Bucket[0], Bucket[1], fillWidth, fillHeight);
-
-        let rectWidth = Rectangle[2] - Rectangle[0];
-        let rectHeight = Rectangle[3] - Rectangle[1];
-        context.clearRect(Rectangle[0], Rectangle[1], rectWidth, rectHeight);
-    };
-
     let fillCanvas = (canv, rect, l1) => {
         context.fillRect(0, 0, canv[0], canv[1]);
         clearRect1(rect);
@@ -137,7 +125,8 @@ window.onload = function () {
     };
 
     let clearRect2 = (l1) => {
-        context.clearRect(l1[0], l1[1], l1[2], l1[3]);
+        let width = l1[2] - l1[0];
+        context.clearRect(l1[0], l1[1], width, l1[1]);
     };
 
     // Creates New Blank Canvas
