@@ -27,7 +27,7 @@ window.onload = function () {
         //give active class
         //leave space in active to separate classes
         palette.className += ' active ';
-    }
+    };
 
 
     let setColor = (color) => {
@@ -37,7 +37,7 @@ window.onload = function () {
         if (active) {
             active.className = 'palette';
         }
-    }
+    };
 
 
     for (let i = 0, n = colors.length; i < n; i++) {
@@ -46,7 +46,7 @@ window.onload = function () {
         palette.style.backgroundColor = colors[i];
         palette.addEventListener('click', setPalette);
         document.getElementById('colors').appendChild(palette);
-    }
+    };
 
 
     let selectedColor = setPalette({ target: document.getElementsByClassName('palette')[0] });
@@ -73,7 +73,6 @@ window.onload = function () {
     let Line1 = newArray(L1);
     let Line2 = newArray(L2);
     let Rectangle = newArray(R);
-    let Bucket = newArray(B);
 
     // Setup Canvas
     // Create Canvas: Should create a new canvas of width w and height h.
@@ -98,10 +97,10 @@ window.onload = function () {
             context.moveTo(arr[0], arr[1]);
             context.lineTo(arr[2], arr[3]);
             context.stroke();
-            console.log(`Drawing Line from X1: ${arr[0]}, Y1: ${arr[1]} to X2: ${arr[2]}, Y2: ${arr[3]}.`)
+            console.log(`Drawing Line from X1: ${arr[0]}, Y1: ${arr[1]} to X2: ${arr[2]}, Y2: ${arr[3]}.`);
         } else {
             console.log('Sorry! Canvas only supports horizontal and vertical lines at this time.');
-            alert('Sorry! Canvas only supports horizontal and vertical lines at this time.')
+            alert('Sorry! Canvas only supports horizontal and vertical lines at this time.');
         }
     };
 
