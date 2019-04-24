@@ -25,7 +25,7 @@ module.exports = {
                 }
             })
             .map(function (command, index) {
-                var commandTools = command.trim().split(' '); //ignore whitespaces
+                var commandTools = command.trim().split(' ');
                 switch (commandTools[0]) {
                     case 'C':
                         screenBuffer = createCanvas(commandTools, screenBuffer);

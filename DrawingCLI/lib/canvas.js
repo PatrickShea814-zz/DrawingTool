@@ -1,5 +1,5 @@
 module.exports = function createCanvas(commandTools, inScreenBuffer) {
-    var outScreenBuffer = clone(inScreenBuffer); //to clone the array
+    var outScreenBuffer = clone(inScreenBuffer);
     if (inScreenBuffer.length !== 1) {
         return outScreenBuffer;
     }
@@ -9,7 +9,6 @@ module.exports = function createCanvas(commandTools, inScreenBuffer) {
     var boxHeight = height + 2;
     var boxWidth = width + 2;
 
-    //Initialize the Canvas buffer
     outScreenBuffer = new Array(boxHeight);
 
     for (var j = 0; j < boxHeight; j++) {

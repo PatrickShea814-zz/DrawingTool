@@ -1,5 +1,5 @@
 module.exports = function bucketFill(commandTools, inScreenBuffer) {
-    var outScreenBuffer = clone(inScreenBuffer); //to clone the array
+    var outScreenBuffer = clone(inScreenBuffer);
     if (outScreenBuffer.length === 1) {
         return outScreenBuffer;
     }
@@ -8,7 +8,6 @@ module.exports = function bucketFill(commandTools, inScreenBuffer) {
     var y = parseInt(commandTools[2], 10);
     var c = commandTools[3];
 
-    //Our screenBuffer is stored as Y,X
     if (outScreenBuffer[y][x] !== ' ') {
         return outScreenBuffer;
     }

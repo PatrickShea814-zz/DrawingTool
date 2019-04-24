@@ -13,19 +13,15 @@ console.log('------------------');
 console.log('Below are the available drawing tools.');
 console.log('------------------');
 
-// Created a series of questions
 inquirer.prompt([
     {
         type: "list",
         name: "toolCommands",
         message: "What drawing tool would you like to use?",
         choices: ["Create Canvas", "Draw Line 1", "Draw Line 2", "Draw Rectangle", "Bucket Fill", "Clear Canvas"]
-    },
-
-
+    }
 ]).then(function (user) {
 
-    // If the user guesses the password...
     if (user.toolCommands === "Create Canvas") {
         console.log("==============================================");
         console.log("Creating Canvas...");

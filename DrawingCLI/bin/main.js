@@ -10,13 +10,6 @@ function splitLines(data) {
 
 var main = function main(argv) {
     var fileName = argv[2];
-
-    if (!fileName) {
-        var errorMsg = 'Usage: ';
-        errorMsg += 'node index.js <input filename>';
-        return Promise.reject(errorMsg);
-    }
-
     return readFile(fileName)
         .then(splitLines)
         .then(processCommands);
