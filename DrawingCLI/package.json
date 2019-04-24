@@ -2,13 +2,14 @@
   "name": "drawingcli",
   "version": "1.0.0",
   "description": "CLI Application for Drawing Tool",
-  "main": "index.js",
+  "main": "./bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Patrick Shea",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.4",
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
     "clui": "^0.3.6",

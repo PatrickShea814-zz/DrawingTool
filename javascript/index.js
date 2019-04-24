@@ -125,15 +125,15 @@ window.onload = function () {
         context.clearRect(Rectangle[0], Rectangle[1], rectWidth, rectHeight);
     };
 
-    let fillAround = (Line1, Rectangle) => {
+    let fillAround = (Rectangle) => {
         let width = $('#canvas').attr('width');
         let height = $('#canvas').attr('height');
         context.fillRect(0, 0, width, height);
-        // let rectWidth = Rectangle[2] - Rectangle[0];
-        // let rectHeight = Rectangle[3] - Rectangle[1];
-        // context.clearRect(Rectangle[0], Rectangle[1], rectWidth, rectHeight);
-        // context.clearRect(0, 80, 240, 80);
-        context.clearRect(Line1[0], Line1[1], Line1[2], Line1[3]);
+        let rectWidth = Rectangle[2] - Rectangle[0];
+        let rectHeight = Rectangle[3] - Rectangle[1];
+        context.clearRect(Rectangle[0], Rectangle[1], rectWidth, rectHeight);
+        context.clearRect(0, 80, 240, 80);
+
     };
 
     // Creates New Blank Canvas

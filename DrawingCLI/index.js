@@ -26,22 +26,47 @@ inquirer.prompt([
 ]).then(function (user) {
 
     // If the user guesses the password...
-    if (user.toolCommands === "myHouse") {
-
+    if (user.toolCommands === "Create Canvas") {
         console.log("==============================================");
         console.log("Creating Canvas...");
-
+        createCanvas();
         console.log("Canvas Created!");
         console.log("==============================================");
-    } else if (user.toolCommands === "Draw Line 1") {
-
-    } else if (user.toolCommands === "Draw Line 2") {
-
-    } else if (user.toolCommands === "Draw Rectangle") {
-
-    } else if (user.toolCommands === "Bucket Fill") {
-
-    } else {
+    }
+    else if (user.toolCommands === "Draw Line 1") {
+        drawLine();
+    }
+    else if (user.toolCommands === "Draw Line 2") {
+        drawLine();
+    }
+    else if (user.toolCommands === "Draw Rectangle") {
+        drawRectangle();
+    }
+    else if (user.toolCommands === "Bucket Fill") {
+        bucketFill();
+    }
+    else {
 
     }
 });
+
+
+var main = require('./bin/main.js');
+
+function printScreenBuffer(screenBuffer) {
+    screenBuffer.map(function (state) {
+        state.map(function (line) {
+            console.log(line.join(''));
+        });
+    });
+    return screenBuffer;
+}
+
+function error(message) {
+    console.log('Error', message);
+    process.exit(1);
+}
+
+main(process.argv)
+    .then(printScreenBuffer)
+    .catch(error);
