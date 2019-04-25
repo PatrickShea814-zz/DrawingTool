@@ -1,6 +1,8 @@
 module.exports = {
 
     createCanvas: function createCanvas(commandTools, inScreenBuffer) {
+        console.log("==============================================");
+        console.log("Creating Canvas...");
         var outScreenBuffer = clone(inScreenBuffer);
         if (inScreenBuffer.length !== 1) {
             return outScreenBuffer;
@@ -23,11 +25,14 @@ module.exports = {
             outScreenBuffer[0][i] = '-';
             outScreenBuffer[boxHeight - 1][i] = '-';
         }
-
+        console.log("Canvas Created!");
+        console.log("==============================================");
         return outScreenBuffer;
     },
 
     clearCanvas: function clearCanvas(commandTools, inScreenBuffer) {
+        console.log("==============================================");
+        console.log("Clearing Canvas...");
         var outScreenBuffer = clone(inScreenBuffer);
         if (inScreenBuffer.length !== 1) {
             return outScreenBuffer;
@@ -50,7 +55,8 @@ module.exports = {
             outScreenBuffer[0][i] = '-';
             outScreenBuffer[boxHeight - 1][i] = '-';
         }
-
+        console.log("Canvas Cleared!");
+        console.log("==============================================");
         return outScreenBuffer;
     }
 };

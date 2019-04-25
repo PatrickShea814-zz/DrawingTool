@@ -1,6 +1,6 @@
 var Promise = require('bluebird');
 
-var processCommands = require('./commands').processCommands;
+var commands = require('./commands').commands;
 
 var readFile = Promise.promisify(require("fs").readFile);
 
@@ -12,7 +12,7 @@ var main = function main(argv) {
     var fileName = argv[2];
     return readFile(fileName)
         .then(splitLines)
-        .then(processCommands);
+        .then(commands);
 };
 
 module.exports = main;

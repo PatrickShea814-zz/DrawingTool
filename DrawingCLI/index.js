@@ -4,7 +4,8 @@ const figlet = require('figlet');
 var inquirer = require("inquirer");
 
 
-var createCanvas = require('./lib/canvas');
+var createCanvas = require('./lib/canvas').createCanvas;
+var clearCanvas = require('./lib/canvas').clearCanvas;
 var createLine = require('./lib/line');
 var createRectangle = require('./lib/rectangle');
 var bucketFill = require('./lib/bucket');
@@ -27,31 +28,39 @@ module.exports = {
             choices: ["Create Canvas", "Draw Line 1", "Draw Line 2", "Draw Rectangle", "Bucket Fill", "Clear Canvas"]
         }
     ]).then(function (command, screenBuffer) {
-
         if (command.toolCommands === "Create Canvas") {
-            console.log("==============================================");
-            console.log("Creating Canvas...");
+            let commandTools = command.toolCommands.split('')[0];
+            console.log(commandTools);
             screenBuffer = createCanvas(commandTools, screenBuffer);
-            console.log("Canvas Created!");
-            console.log("==============================================");
             return screenBuffer;
         }
         else if (command.toolCommands === "Draw Line 1") {
+            let commandTools = command.toolCommands.split('')[0];
+            console.log(commandTools);
             screenBuffer = createLine(commandTools, screenBuffer);
+            return screenBuffer;
         }
         else if (command.toolCommands === "Draw Line 2") {
+            let commandTools = command.toolCommands.split('')[0];
+            console.log(commandTools);
             screenBuffer = createLine(commandTools, screenBuffer);
             return screenBuffer;
         }
         else if (command.toolCommands === "Draw Rectangle") {
+            let commandTools = command.toolCommands.split('')[0];
+            console.log(commandTools);
             screenBuffer = createRectangle(commandTools, screenBuffer);
             return screenBuffer;
         }
         else if (command.toolCommands === "Bucket Fill") {
+            let commandTools = command.toolCommands.split('')[0];
+            console.log(commandTools);
             screenBuffer = bucketFill(commandTools, screenBuffer);
             return screenBuffer;
         }
         else {
+            let commandTools = command.toolCommands.split('')[0];
+
             screenBuffer = clearCanvas(commandTools, screenBuffer);
             return screenBuffer;
         }
